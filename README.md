@@ -62,7 +62,7 @@ chmod +x run_ours.sh
 Alternatively, you can manually build the project step-by-step:
 
 ```bash
-git clone [https://github.com/fishlb/constantPP-KNN.git](https://github.com/fishlb/constantPP-KNN.git)
+git clone https://github.com/fishlb/constantPP-KNN.git
 cd constantPP-KNN
 mkdir build
 cd build
