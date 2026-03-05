@@ -1,0 +1,64 @@
+===== Offline Cost Evaluation =====
+k = 5
+================*******==================
+Dataset        : test100-60.csv
+#Sample (n)    : 100
+#Feature(m)    : 60
+#Label(c)      : 3
+Offline time breakdown (seconds):
+  Beaver triples : 0.000837
+  DCF keys       : 0.173077
+  DPF keys       : 0.000465449
+  Random masks   : 6e-06
+  --------------------------------
+  Total offline  : 0.174 s
+================*******==================
+Dataset        : test200-60.csv
+#Sample (n)    : 200
+#Feature(m)    : 60
+#Label(c)      : 3
+Offline time breakdown (seconds):
+  Beaver triples : 0.002
+  DCF keys       : 0.713
+  DPF keys       : 0.001
+  Random masks   : 0.000
+  --------------------------------
+  Total offline  : 0.716 s
+================*******==================
+Dataset        : test300-60.csv
+#Sample (n)    : 300
+#Feature(m)    : 60
+#Label(c)      : 3
+Offline time breakdown (seconds):
+  Beaver triples : 0.003
+  DCF keys       : 1.341
+  DPF keys       : 0.011
+  Random masks   : 0.000
+  --------------------------------
+  Total offline  : 1.354 s
+================*******==================
+Dataset        : test400-60.csv
+#Sample (n)    : 400
+#Feature(m)    : 60
+#Label(c)      : 3
+Offline time breakdown (seconds):
+  Beaver triples : 0.005
+  DCF keys       : 2.414
+  DPF keys       : 0.004
+  Random masks   : 0.000
+  --------------------------------
+  Total offline  : 2.423 s
+================*******==================
+Dataset        : test500-60.csv
+#Sample (n)    : 500
+#Feature(m)    : 60
+#Label(c)      : 3
+Offline time breakdown (seconds):
+  Beaver triples : 0.004
+  DCF keys       : 4.550
+  DPF keys       : 0.028
+  Random masks   : 0.000
+  --------------------------------
+  Total offline  : 4.583 s
+
+===== Finished =====

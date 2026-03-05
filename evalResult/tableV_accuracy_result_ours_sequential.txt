@@ -1,0 +1,39 @@
+=====TABLE V - Ours Accuracy (Real datasets) =====
+================*******==================
+Dataset        : Iris.csv
+#Sample (n)    : 150
+#Feature(m)    : 4
+#Label(c)      : 3
+Accuracy  = 0.9
+================*******==================
+Dataset        : Toxicity.csv
+#Sample (n)    : 171
+#Feature(m)    : 1203
+#Label(c)      : 2
+Accuracy  = 0.588235
+================*******==================
+Dataset        : Wine.csv
+#Sample (n)    : 178
+#Feature(m)    : 13
+#Label(c)      : 3
+Accuracy  = 0.944444
+================*******==================
+Dataset        : Arcene.csv
+#Sample (n)    : 200
+#Feature(m)    : 10000
+#Label(c)      : 2
+Accuracy  = 0.825
+================*******==================
+Dataset        : Chronic Kidney Disease.csv
+#Sample (n)    : 400
+#Feature(m)    : 24
+#Label(c)      : 2
+Accuracy  = 0.975
+================*******==================
+Dataset        : Breast Cancer.csv
+#Sample (n)    : 569
+#Feature(m)    : 30
+#Label(c)      : 2
+Accuracy  = 0.920354
+
+===== Finished =====
