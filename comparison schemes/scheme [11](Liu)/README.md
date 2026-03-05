@@ -1,6 +1,13 @@
-# Scheme [11] - Evaluation Source Code
+# Scheme [11] Evaluation
 
-This repository contains the implementation of Scheme [11], provided for performance comparison as described in our paper.
+This directory contains the evaluation program for Scheme [11], provided for performance comparison as described in our paper. 
+
+> **Important Note on Implementation:**
+> Since the original source code for Scheme [11] is not publicly available, we have developed a faithful simulation program to evaluate its computational latency. 
+> 
+> Specifically, relying on the theoretical complexity analysis presented in their paper, we rigorously deduced the exact number of the most computationally expensive cryptographic operations (such as homomorphic encryptions and decryptions) required by their protocol. This program executes these specific operations the exact required number of times to measure the latency. 
+> 
+> This approach effectively provides a highly accurate **lower bound** for their execution time, as it deliberately ignores other lightweight overheads. This ensures our comparative evaluation is both rigorous and strictly fair.
 
 ---
 
@@ -18,7 +25,7 @@ The core evaluation logic is implemented in Java. You can easily run the scheme 
 ### Option A: Via Java IDE
 1. Open the **root directory of the current scheme** (e.g., `scheme [11](Liu)`) in your IDE (like VS Code).
 2. Locate the main entry file at `src/test/java/de/henku/jpaillier/App.java`.
-3. Simply click the **Run** (or Play) button provided by your IDE.
+3. Simply click the **Run** button provided by your IDE.
 
 ### Option B: Via Command Line
 Open your terminal, navigate to the **root directory of the current scheme** (e.g., `scheme [11](Liu)`), and execute the following commands:
