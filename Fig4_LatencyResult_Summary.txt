@@ -1,0 +1,19 @@
+=== Fig.4 Query Latency Comparison ===
+
+--- Fig.4a: Varying dataset size n (Fixed k=5) ---
+Scheme Ours(Parallel) Ours(Sequential) Scheme [11] Scheme [12] Scheme [13]
+n                                                                         
+100           0.011 s          0.038 s     4.448 s     0.076 s      8.55 s
+200           0.045 s          0.129 s     8.328 s     0.152 s    16.777 s
+300           0.069 s          0.296 s    12.262 s     0.222 s    25.158 s
+400           0.125 s          0.533 s     16.89 s     0.306 s    33.077 s
+500           0.191 s          0.857 s    21.126 s     0.385 s    41.704 s
+
+--- Fig.4b: Varying neighbor size k (Fixed n=400) ---
+Scheme Ours(Parallel) Ours(Sequential) Scheme [11] Scheme [12] Scheme [13]
+k                                                                         
+5             0.132 s           0.57 s    17.495 s     0.337 s     35.19 s
+10            0.123 s          0.557 s    33.472 s     0.626 s    32.653 s
+15            0.125 s           0.55 s    49.562 s     0.922 s    33.376 s
+20            0.119 s          0.543 s    66.971 s     1.211 s    33.222 s
+25            0.127 s          0.558 s    81.517 s     1.493 s    32.755 s

@@ -1,0 +1,10 @@
+=== Table V - Accuracy Comparison ===
+
+Scheme                              ours_parallel  ours_sequential  plaintext baseline
+Dataset                n   m     c                                                    
+Iris                   150 4     3       0.900000         0.900000            0.900000
+Toxicity               171 1203  2       0.558824         0.588235            0.558824
+Wine                   178 13    3       0.944444         0.944444            0.944444
+Arcene                 200 10000 2       0.825000         0.825000            0.825000
+Chronic Kidney Disease 400 24    2       0.975000         0.975000            0.975000
+Breast Cancer          569 30    2       0.920354         0.920354            0.920354
