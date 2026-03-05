@@ -1,0 +1,35 @@
+===== Query Latency Test (k = 5) =====
+================*******==================
+Dataset         : test400-60.csv
+#Sample (n)     : 400
+#Feature(m)     : 60
+#Label(c)       : 3
+Latency (1 query) = 0.337 s
+===== Query Latency Test (k = 10) =====
+================*******==================
+Dataset         : test400-60.csv
+#Sample (n)     : 400
+#Feature(m)     : 60
+#Label(c)       : 3
+Latency (1 query) = 0.626 s
+===== Query Latency Test (k = 15) =====
+================*******==================
+Dataset         : test400-60.csv
+#Sample (n)     : 400
+#Feature(m)     : 60
+#Label(c)       : 3
+Latency (1 query) = 0.922 s
+===== Query Latency Test (k = 20) =====
+================*******==================
+Dataset         : test400-60.csv
+#Sample (n)     : 400
+#Feature(m)     : 60
+#Label(c)       : 3
+Latency (1 query) = 1.211 s
+===== Query Latency Test (k = 25) =====
+================*******==================
+Dataset         : test400-60.csv
+#Sample (n)     : 400
+#Feature(m)     : 60
+#Label(c)       : 3
+Latency (1 query) = 1.493 s
