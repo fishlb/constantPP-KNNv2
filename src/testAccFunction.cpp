@@ -1,7 +1,8 @@
 #include "../include/secknn.h"
+#include <iomanip>
 /*
-*test plaintext baseline accuracy and our constantPP-KNN accuracy
-*/
+ *test plaintext baseline accuracy and our constantPP-KNN accuracy
+ */
 
 // test plaintext baseline accuracy
 int testPlainAcc()
@@ -76,9 +77,13 @@ int testPlainAcc()
             double accuracy =
                 static_cast<double>(correct) / test.data.size();
 
+            // cout << "k = " << k
+            //      << " | Accuracy = " << (double)accuracy << "\n";
+            // fout << "Accuracy  = " << (double)accuracy << "\n";
             cout << "k = " << k
-                 << " | Accuracy = " << (double)accuracy << "\n";
-            fout << "Accuracy  = " << (double)accuracy << "\n";
+                 << " | Accuracy = " << fixed << setprecision(3) << accuracy << "\n";
+
+            fout << "Accuracy = " << fixed << setprecision(3) << accuracy << "\n";
         }
     }
     fout << "\n===== Finished =====\n";
@@ -271,9 +276,13 @@ int testConstKNNAcc(int is_parallel)
             (long double)correctCount /
             (long double)test.data.size();
 
+        // cout << "k = " << 5
+        //      << " | Accuracy = " << (double)accuracy << "\n";
+        // fout << "Accuracy  = " << (double)accuracy << "\n";
         cout << "k = " << 5
-             << " | Accuracy = " << (double)accuracy << "\n";
-        fout << "Accuracy  = " << (double)accuracy << "\n";
+             << " | Accuracy = " << fixed << setprecision(3) << accuracy << "\n";
+
+        fout << "Accuracy = " << fixed << setprecision(3) << accuracy << "\n";
     }
     fout << "\n===== Finished =====\n";
     fout.close();
