@@ -15,8 +15,6 @@ This README provides:
 
 The environment requirements for this project are highly flexible. The primary compatibility boundary is defined by the underlying Function Secret Sharing (FSS) core implementation ([frankw2/libfss](https://github.com/frankw2/libfss)). 
 
-**General Rule: If your environment can successfully compile and run `libfss`, it can run this project.**
-
 **Minimum Requirements:**
 - **Build Tool**: CMake >= 3.5
 - **Compiler**: Any standard C/C++ compiler compatible with `libfss` (e.g., GCC).
@@ -24,7 +22,7 @@ The environment requirements for this project are highly flexible. The primary c
   - GNU GMP (Tested with >= 6.1.2)
   - OpenSSL (`libssl-dev`)
   - OpenMP (Enabled for parallel execution)
-
+  - EMP-toolkit (`emp-tool` for timing)
 **Tested Benchmark Environment:**
 The experiments in our paper were conducted on:
 - **OS**: Ubuntu 18.04 LTS
@@ -40,8 +38,16 @@ You can install the required dependencies using the following commands:
 ```bash
 sudo apt-get update
 sudo apt-get install -y build-essential cmake libgmp-dev libgmpxx4ldbl libssl-dev
-```
 
+# Clone the emp-tool repository
+git clone https://github.com/emp-toolkit/emp-tool.git
+cd emp-tool
+# Build and install
+mkdir build && cd build
+cmake ..
+make
+sudo make install
+```
 ---
 
 ## 3. Build Instructions
