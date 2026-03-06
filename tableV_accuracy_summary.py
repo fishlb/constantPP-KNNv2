@@ -72,18 +72,22 @@ if __name__ == "__main__":
     df_results, dataset_order = parse_table_v_results()
 
     if not df_results.empty:
-        # Convert the 'Dataset' column to Categorical to preserve the original order
+        pd.set_option('display.max_columns', None)
+        pd.set_option('display.width', 10000) 
+
         df_results['Dataset'] = pd.Categorical(df_results['Dataset'], categories=dataset_order, ordered=True)
 
-        # Use pivot_table to rearrange the data, setting sort=False to maintain order
+
         pivot_df = df_results.pivot_table(
             index=["Dataset", "n", "m", "c"], 
             columns="Scheme", 
-            values="Accuracy",
-            sort=False 
+            values="Accuracy"
         )
         
-        # Output the results to a txt document
+        pivot_df = pivot_df.dropna(how='all')
+        
+        pivot_df = pivot_df.fillna('-')
+        
         txt_filename = "TableV_Accuracy_Summary.txt"
         with open(txt_filename, "w", encoding="utf-8") as f:
             f.write("=== Table V - Accuracy Comparison ===\n\n")

@@ -92,9 +92,9 @@ if __name__ == "__main__":
             for col in pivot_3a.columns:
                 pivot_3a[col] = pivot_3a[col].apply(format_with_unit)
             
-            print("--- Fig.3a: Varying n (k=5) ---")
-            print(pivot_3a.to_string())
-            print("\n")
+            # print("--- Fig.3a: Varying n (k=5) ---")
+            # print(pivot_3a.to_string())
+            # print("\n")
             
             f.write("--- Fig.3a: Varying dataset size n (Fixed k=5) ---\n")
             f.write(pivot_3a.to_string() + "\n\n")
@@ -111,9 +111,9 @@ if __name__ == "__main__":
             for col in pivot_3b.columns:
                 pivot_3b[col] = pivot_3b[col].apply(format_with_unit)
             
-            print("--- Fig.3b: Varying k (n=400) ---")
-            print(pivot_3b.to_string())
-            print("\n")
+            # print("--- Fig.3b: Varying k (n=400) ---")
+            # print(pivot_3b.to_string())
+            # print("\n")
             
             f.write("--- Fig.3b: Varying neighbor size k (Fixed n=400) ---\n")
             f.write(pivot_3b.to_string() + "\n\n")

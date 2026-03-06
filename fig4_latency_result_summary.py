@@ -127,4 +127,4 @@ if __name__ == "__main__":
             f.write("--- Fig.4b: Varying neighbor size k (Fixed n=400) ---\n")
             f.write(p4b.to_string() + "\n")
 
-    print(f" Summary saved to: {summary_file}")
+    print(f"Data extraction complete! Summary results saved to txt document: {summary_file}")
