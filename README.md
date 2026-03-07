@@ -89,7 +89,7 @@ sudo apt update
 sudo apt install python3.8
 
 #Set Python 3.8.x to a higher priority in the system
-sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 2
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 100
 
 # Verify the installation (should output 3.8.x)
 python --version 
