@@ -102,7 +102,6 @@ python get-pip-3.8.py
 python -m pip install pandas numpy
 
 ```
-> **Note:**  You must activate this virtual environment using `source ppknn_env/bin/activate` every time you open a new terminal to run the Python experiments.
 
 ## 3. Build Instructions
 
