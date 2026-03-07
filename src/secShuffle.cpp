@@ -11,13 +11,27 @@
  */
 
  // generate random permutation
+// vector<int> random_permutation(int n) {
+//     vector<int> pi(n);
+//     for (int i = 0; i < n; i++) pi[i] = i;
+
+//     random_device rd;
+//     mt19937 g(42);
+//     shuffle(pi.begin(), pi.end(), g);
+//     return pi;
+// }
+
 vector<int> random_permutation(int n) {
     vector<int> pi(n);
     for (int i = 0; i < n; i++) pi[i] = i;
 
-    random_device rd;
-    mt19937 g(rd());
-    shuffle(pi.begin(), pi.end(), g);
+    mt19937 g(42);
+
+    for (int i = n - 1; i > 0; --i) {
+        int j = g() % (i + 1);
+        std::swap(pi[i], pi[j]);
+    }
+    
     return pi;
 }
 

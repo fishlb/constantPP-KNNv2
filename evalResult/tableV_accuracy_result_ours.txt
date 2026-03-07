@@ -1,4 +1,4 @@
-=====TABLE V - Plaintext Baseline Accuracy (Real datasets)  =====
+=====TABLE V - Ours Accuracy (Real datasets) =====
 ================*******==================
 Dataset        : Iris.csv
 #Sample (n)    : 150

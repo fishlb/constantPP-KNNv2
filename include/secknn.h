@@ -133,6 +133,7 @@ vector<vector<mpz_class>> convertUint64ToMpzClass(const vector<vector<uint64_t>>
 // test plaintext model accuracy
 int testPlainAcc();
 // test constant secKNN accuracy
+int testConstKNNAcc();
 int testConstKNNAcc(int is_parallel);
 
 //test offline cost

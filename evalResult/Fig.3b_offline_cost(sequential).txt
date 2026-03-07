@@ -6,12 +6,12 @@ Dataset        : test400-60.csv
 #Feature(m)    : 60
 #Label(c)      : 3
 Offline time breakdown (seconds):
-  Beaver triples : 0.00387
-  DCF keys       : 9.6536
-  DPF keys       : 0.001071
-  Random masks   : 1.4e-05
+  Beaver triples : 0.003716
+  DCF keys       : 8.96976
+  DPF keys       : 0.00105
+  Random masks   : 1.6e-05
   --------------------------------
-  Total offline  : 9.659 s
+  Total offline  : 8.975 s
 k = 10
 ================*******==================
 Dataset        : test400-60.csv
@@ -19,12 +19,12 @@ Dataset        : test400-60.csv
 #Feature(m)    : 60
 #Label(c)      : 3
 Offline time breakdown (seconds):
-  Beaver triples : 0.002
-  DCF keys       : 9.155
+  Beaver triples : 0.003
+  DCF keys       : 9.563
   DPF keys       : 0.004
   Random masks   : 0.000
   --------------------------------
-  Total offline  : 9.162 s
+  Total offline  : 9.570 s
 k = 15
 ================*******==================
 Dataset        : test400-60.csv
@@ -32,12 +32,12 @@ Dataset        : test400-60.csv
 #Feature(m)    : 60
 #Label(c)      : 3
 Offline time breakdown (seconds):
-  Beaver triples : 0.002
-  DCF keys       : 9.580
-  DPF keys       : 0.009
+  Beaver triples : 0.003
+  DCF keys       : 9.540
+  DPF keys       : 0.012
   Random masks   : 0.000
   --------------------------------
-  Total offline  : 9.592 s
+  Total offline  : 9.554 s
 k = 20
 ================*******==================
 Dataset        : test400-60.csv
@@ -45,12 +45,12 @@ Dataset        : test400-60.csv
 #Feature(m)    : 60
 #Label(c)      : 3
 Offline time breakdown (seconds):
-  Beaver triples : 0.003
-  DCF keys       : 9.354
+  Beaver triples : 0.004
+  DCF keys       : 9.704
   DPF keys       : 0.015
   Random masks   : 0.000
   --------------------------------
-  Total offline  : 9.372 s
+  Total offline  : 9.723 s
 k = 25
 ================*******==================
 Dataset        : test400-60.csv
@@ -59,10 +59,10 @@ Dataset        : test400-60.csv
 #Label(c)      : 3
 Offline time breakdown (seconds):
   Beaver triples : 0.003
-  DCF keys       : 9.639
-  DPF keys       : 0.037
+  DCF keys       : 9.473
+  DPF keys       : 0.023
   Random masks   : 0.000
   --------------------------------
-  Total offline  : 9.679 s
+  Total offline  : 9.499 s
 
 ===== Finished =====
