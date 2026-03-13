@@ -9,8 +9,7 @@ This README provides:
 
 - **Experiment Execution:** An interactive menu to run our scheme's benchmarks for Table V, Figure 3, and Figure 4.
 
-- **Data Extraction:** Python scripts to summarize raw results into formatted tables.
-
+- **Data Extraction & Visualization:** Python scripts to summarize raw results into formatted tables and generate trend plots for Figure 3 and Figure 4.
 ---
 
 ## 1. Prerequisites
@@ -38,7 +37,7 @@ The experiments in our paper were conducted on:
 
 ## 2. Environment Setup
 
-This project is developed and tested on Ubuntu. The core cryptographic protocols are implemented in C++, while Python scripts are used for extracting and formatting the experimental results. Please follow the steps below to configure your environment to ensure reproducibility.
+This project is developed and tested on Ubuntu. The core cryptographic protocols are implemented in C++, while Python scripts are used for extracting, formatting, and plotting the experimental results. Please follow the steps below to configure your environment to ensure reproducibility.
 
 ### 2.1. Development Libraries & Compiler (GCC 13)
 
@@ -81,7 +80,7 @@ sudo make install
 ```
 
 ### 2.3. Python Environment (Python >= 3.6)
-The result extraction scripts (e.g., fig3_offline_cost_summary.py) require Python 3.6 or higher.
+The result extraction and plotting scripts require Python 3.6 or higher：
 
 ```bash
 sudo add-apt-repository ppa:deadsnakes/ppa
@@ -94,18 +93,23 @@ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 100
 # Verify the installation (should output 3.8.x)
 python --version 
 
-# Install required packages (numpy and pandas)
+# Install required packages (pandas, numpy and matplotlib)
 sudo apt update
 sudo apt install -y python3.8-distutils python3.8-dev
 wget https://bootstrap.pypa.io/pip/3.8/get-pip.py -O get-pip-3.8.py
 python get-pip-3.8.py
 python -m pip install pandas numpy
 
+# Install matplotlib for visualization
+python3.8 -m pip install --user --force-reinstall matplotlib
+# Verify the installation path
+python3.8 -c "import matplotlib; print(matplotlib.__file__)"
+# Expected output: /home/xxx/.local/lib/python3.8/site-packages/matplotlib/__init__.py
 ```
 
 ## 3. Build Instructions
 
-We provide two ways to build and run the project: using an automated script (Recommended) or compiling manually via CMake.
+Before building, note that the KNN parameter (`k=5`) and the maximum thread count (dynamically capped at `6`) are defined at the top of `main.cpp`. You may adjust these variables if needed. We provide two ways to build and run the project: using an automated script (Recommended) or compiling manually via CMake.
 
 ### Option A: Automated Script (Recommended)
 The easiest way to build the project and launch the interactive testing menu is to use the provided bash script:
@@ -156,47 +160,44 @@ Experiments can be run individually by selecting the respective number.
 
 ## 5. Reproducing Table V, Figures 3 and 4
 
-For each experiment you run, the program will:
-- Print the accuracy or timing results directly to standard output (stdout).
-- Save the results into the `evalResult/` directory (and the respective `comparison schemes/` directories for comparison schemes).
+For each experiment you run, the program will print the results (accuracy, computation cost) directly to the console and save the raw data for summarization.
 
-Each plot and table from the paper has the corresponding raw `.txt` file generated in these folders.
+### Output Locations:
 
-> **Important Note on Comparison Schemes:** To reproduce the latency results for the comparison schemes (Scheme [11], Scheme [12], and Scheme [13] shown in Figure 4), you must explicitly navigate into their respective folders under the `comparison schemes/` directory and execute them individually. Please follow the specific execution instructions provided in each scheme's local `README.md`.
+**Our Proposed Scheme:** Raw `.txt` files are saved in the `evalResult/` directory.
+
+**Comparison Schemes:** Raw `.txt` files are saved in their respective subdirectories within `comparison schemes/` (after being executed individually).
+
+> **Important Note on Comparison Schemes:** To reproduce the results for the comparison schemes (Scheme [11], Scheme [12], and Scheme [13] shown in Figure 4), you must explicitly navigate into their respective folders under the `comparison schemes/` directory and execute them individually. Please follow the specific execution instructions provided in each scheme's local `README.md`.
 
 
-### 5.1. Summarizing the Results
-To easily verify the data against the paper, we provide Python scripts that automatically parse the results across all directories and generate formatted summary tables.
+### 5.1. Summarizing and Plotting the Results
+To verify the data against the paper and compare trends, we provide scripts that automatically parse the results and generate visualization plots.
 
-You can extract and summarize the results using either the automated bash script or by running the Python scripts individually.
-
-### Option A: Automated Summary (Recommended)
-Run the provided bash script to extract and format all results: (**Require Python >= 3.6**)
+### Option A: Automated Summary & Plotting (Recommended)
+Run the provided bash script to extract results, format tables, and generate plots automatically: (**Require Python >= 3.6**)
 
 ```bash
 chmod +x run_results_summary.sh
 ./run_results_summary.sh
 ```
 
-### Option B: Manual Summary
-Alternatively, you can generate the summaries individually based on what you want to verify: (**Require Python >= 3.6**)
+### Option B: Manual Summary & Plotting
+Alternatively, you can run the scripts individually: (**Require Python >= 3.6**)
 
 ```bash
-# To reproduce Table V (Accuracy Comparison)
+# Generate summary tables (Table V, Fig 3/4 data)
 python tableV_accuracy_summary.py
-(or: python3 tableV_accuracy_summary.py)
-
-# To reproduce Figure 3 (Offline Cost Comparison)
 python fig3_offline_cost_summary.py
-(or: python3 fig3_offline_cost_summary.py)
-
-# To reproduce Figure 4 (Query Latency Comparison)
 python fig4_latency_result_summary.py
-(or: python3 fig4_latency_result_summary.py)
+
+# Generate trend comparison plots (Fig 3 & Fig 4)
+python draw_fig3fig4.py
 ```
 
 ### 5.2. Final Output
-The summary scripts will generate the following formatted `.txt` files in the project's root directory:
+After execution, the formatted tables and plot images will be saved in the root directory:
 - `TableV_Accuracy_Summary.txt`
 - `Fig3_OfflineCost_Summary.txt`
 - `Fig4_LatencyResult_Summary.txt`
+- `Fig3_and_Fig4.png`

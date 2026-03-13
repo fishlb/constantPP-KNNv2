@@ -6,7 +6,7 @@ vector<vector<uint64_t>> convertMpzClassToUint64(const vector<vector<mpz_class>>
     for (size_t i = 0; i < mpzArray.size(); ++i) {
         uint64Array[i].resize(mpzArray[i].size());
         for (size_t j = 0; j < mpzArray[i].size(); ++j) {
-            uint64Array[i][j] = mpzArray[i][j].get_ui();  // 转换为 uint64_t
+            uint64Array[i][j] = mpzArray[i][j].get_ui();  // convert to uint64_t
         }
     }
     return uint64Array;

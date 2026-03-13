@@ -41,9 +41,3 @@ uint64_t knn_predict(
     const std::vector<uint64_t>& query,
     int k,
     size_t num_labels);
-//plaintext KNN accuracy
-// void evaluate_knn_accuracy(
-//     const Dataset& train,
-//     const Dataset& test,
-//     const std::vector<int>& k_values
-// );

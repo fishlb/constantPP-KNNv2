@@ -4,30 +4,30 @@ Dataset        : test100-60.csv
 #Sample (n)    : 100
 #Feature(m)    : 60
 #Label(c)      : 3
-Latency (1 query) = 0.037 s
+Latency (1 query) = 0.043 s
 ================*******==================
 Dataset        : test200-60.csv
 #Sample (n)    : 200
 #Feature(m)    : 60
 #Label(c)      : 3
-Latency (1 query) = 0.127 s
+Latency (1 query) = 0.151 s
 ================*******==================
 Dataset        : test300-60.csv
 #Sample (n)    : 300
 #Feature(m)    : 60
 #Label(c)      : 3
-Latency (1 query) = 0.303 s
+Latency (1 query) = 0.311 s
 ================*******==================
 Dataset        : test400-60.csv
 #Sample (n)    : 400
 #Feature(m)    : 60
 #Label(c)      : 3
-Latency (1 query) = 0.504 s
+Latency (1 query) = 0.529 s
 ================*******==================
 Dataset        : test500-60.csv
 #Sample (n)    : 500
 #Feature(m)    : 60
 #Label(c)      : 3
-Latency (1 query) = 0.840 s
+Latency (1 query) = 0.818 s
 
 ===== Finished =====

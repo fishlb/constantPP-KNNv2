@@ -19,16 +19,17 @@ vector<mpz_class> secMax(const vector<vector<mpz_class>> triple_shares,
 {
     uint64_t k = X_shares1.size();
     vector<vector<uint64_t>> SU = secBGtCom(X_shares1, X_shares2, fServer, k0_gt, k1_gt);
+
     for (size_t i = 0; i < SU[0].size(); i++)
     {
         SU[1][i] = 0 - SU[1][i];//for fss shares, f(x)=f_1(x)-f_2(x), so, f(x)=f_1(x)+(-f_2(x)), the operation if EqTest using +
-        // cout << "SU[i] = "<< SU[0][i] + SU[1][i] << endl;
+        // cout << "after secBGCOm SU[i] = "<< SU[0][i] + SU[1][i] << endl;
     }
     vector<vector<mpz_class>> U = secEqTest(SU[0], SU[1], k - 1, fServer, k0_eq, k1_eq);
     for (size_t i = 0; i < U[0].size(); i++)
     {
         U[1][i] = 0 - U[1][i];
-        // cout << "U[i] = "<< U[0][i].get_si() + U[1][i].get_si() << endl;
+        // cout << "U[i] = "<< U[0][i].get_si() + U[1][i].get_si() << endl;   
     }
     vector<vector<mpz_class>> L_pi = secMul_mpz(triple_shares, L_shares1, L_shares2, U[0], U[1]);
     vector<mpz_class> lmax(2, 0);
@@ -37,5 +38,7 @@ vector<mpz_class> secMax(const vector<vector<mpz_class>> triple_shares,
         lmax[0] += L_pi[0][i];
         lmax[1] += L_pi[1][i];
     }
+    mpz_class final_label = lmax[0] + lmax[1];
+
     return lmax;
 }

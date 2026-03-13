@@ -18,10 +18,16 @@ python fig3_offline_cost_summary.py
 echo "Processing Fig 4..."
 python fig4_latency_result_summary.py
 
+# 4. Draw Fig 3 and Fig 4
+echo "Drawing Fig 3 and Fig 4..."
+python draw_fig3fig4.py
+
 echo "---------------------------------------------------"
 echo "All scripts have finished!"
 echo "Check the following files in root directory:"
 echo " - TableV_Accuracy_Summary.txt"
 echo " - Fig3_OfflineCost_Summary.txt"
 echo " - Fig4_LatencyResult_Summary.txt"
+echo " - Fig3_and_Fig4.png"
 echo "==================================================="
+

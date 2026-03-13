@@ -146,8 +146,6 @@ uint64_t squared_distance_ring(
     return dist;
 }
 
-/* ====== plaintext KNN ======== */
-
 uint64_t knn_predict(
     const vector<DataPoint>& data,
     const vector<uint64_t>& query,
@@ -163,7 +161,7 @@ uint64_t knn_predict(
     }
 
     // unsigned comparison on uint64_t
-    sort(dl.begin(), dl.end(),
+    stable_sort(dl.begin(), dl.end(),
      [](const pair<uint64_t, uint64_t>& x,
         const pair<uint64_t, uint64_t>& y) {
          if (x.first != y.first) return x.first < y.first;

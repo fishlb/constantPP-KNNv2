@@ -1,4 +1,5 @@
 #include "../include/secknn.h"
+#include <fstream>
 /*
  * ============================================================
  * Implementation of SecKMin (Algorithm 8 in the paper).
@@ -16,7 +17,8 @@ vector<vector<uint64_t>> secKMin(const vector<vector<uint64_t>> &triple_shares,
                                  Fss *fServer,
                                  ServerKeyLt *k0_lt, ServerKeyLt *k1_lt, // less than, compare to 1
                                  ServerKeyGt *k0_gt, ServerKeyGt *k1_gt, // greater than, compare to n-k-1
-                                 ServerKeyEq *k0_eq, ServerKeyEq *k1_eq) // eq test, compare to 0
+                                 ServerKeyEq *k0_eq, ServerKeyEq *k1_eq,size_t i) // eq test, compare to 0
+
 {
     uint64_t n = X_shares1.size();
     secShuffle(X_shares1, X_shares2, shuffleMaterial);
@@ -24,8 +26,9 @@ vector<vector<uint64_t>> secKMin(const vector<vector<uint64_t>> &triple_shares,
     vector<uint64_t> delta_su(n, 0);
     vector<vector<uint64_t>> l_pi(2); // l_pi store the k-nearest labels' shares
     vector<vector<uint64_t>> su = secBLtCom(X_shares1, X_shares2, fServer, k0_lt, k1_lt);
-
     uint64_t ui0, ui1;
+
+    int count = 0;
     for (size_t i = 0; i < n; i++)
     {
         delta_su[i] = su[0][i] - su[1][i];             // for fss shares, f(x)=f_1(x)-f_2(x), compare if dalta_su[i] > n-k-1
@@ -39,6 +42,7 @@ vector<vector<uint64_t>> secKMin(const vector<vector<uint64_t>> &triple_shares,
             l_pi[1].push_back(L_shares2[i]);
         }
     }
+
     return l_pi;
 }
 vector<vector<uint64_t>> secKMin_parallel(const vector<vector<uint64_t>> &triple_shares,
@@ -48,17 +52,17 @@ vector<vector<uint64_t>> secKMin_parallel(const vector<vector<uint64_t>> &triple
                                           Fss *fServer,
                                           ServerKeyLt *k0_lt, ServerKeyLt *k1_lt, // less than, compare to 1
                                           ServerKeyGt *k0_gt, ServerKeyGt *k1_gt, // greater than, compare to n-k-1
-                                          ServerKeyEq *k0_eq, ServerKeyEq *k1_eq) // eq test, compare to 0
+                                          ServerKeyEq *k0_eq, ServerKeyEq *k1_eq, // eq test, compare to 0
+                                          const int num_threads
+                                        ) 
 {
-    // cout<<"secKMin_parallel"<<endl;
+    secShuffle(X_shares1, X_shares2, shuffleMaterial);
+    secShuffle(L_shares1, L_shares2, shuffleMaterial);
     uint64_t n = X_shares1.size();
     vector<uint64_t> delta_su(n, 0);
     vector<vector<uint64_t>> l_pi(2); // l_pi store the k-nearest labels' shares
-    const unsigned num_threads = 
-        std::max(1u, std::min(6u, std::thread::hardware_concurrency()));
     // std::cout <<"#thread = "<< num_threads <<endl;
     vector<vector<uint64_t>> su = secBLtCom_parallel(X_shares1, X_shares2, fServer, k0_lt, k1_lt, num_threads);
-    // /*num_threads=*/std::thread::hardware_concurrency());
 
     uint64_t ui0, ui1;
     for (size_t i = 0; i < n; i++)

@@ -2,11 +2,14 @@
 #include <immintrin.h>
 #include <wmmintrin.h>
 #include <openssl/aes.h>
-
 #include <iostream>
 #include <limits>
-
 using namespace std;
+// global variables
+const int num_threads =max(1u, min(6u, thread::hardware_concurrency()));// paraellel threads for Fig.3 & Fig.4, we set it to 6 for our experiments, you can adjust it according to your machine
+int k = 5;//for Table V and Fig.3a,Fig.4a 
+vector<int> k_values = {5, 10, 15, 20, 25};//for Fig.3b,Fig.4b
+double split_ratio = 0.2;//stratified train / test split, we employ 8:2 
 
 void printMenu()
 {
@@ -59,54 +62,54 @@ int main()
         /* TABLE V */
         case 1:
             cout << "[TABLE V - Plaintext baseline]\n";
-            testPlainAcc();
+            testPlainAcc(k, split_ratio);
             break;
 
         case 2:
             cout << "[TABLE V - Ours ]\n";
-            testConstKNNAcc();
+            testConstKNNAcc(k, split_ratio, num_threads);
             break;
 
         /* Fig.3 */
         case 3:
             cout << "[Fig.3a - Offline (Sequential)]\n";
-            test_offline_cost(0, 0);
+            test_offline_cost(k, k_values, 0, 0, 1);
             break;
 
         case 4:
             cout << "[Fig.3a - Offline (Parallel)]\n";
-            test_offline_cost(0, 1);
+            test_offline_cost(k, k_values, 0, 1, num_threads);
             break;
 
         case 5:
             cout << "[Fig.3b - Offline (Sequential)]\n";
-            test_offline_cost(1, 0);
+            test_offline_cost(k, k_values, 1, 0, 1);
             break;
 
         case 6:
             cout << "[Fig.3b - Offline (Parallel)]\n";
-            test_offline_cost(1, 1);
+            test_offline_cost(k, k_values, 1, 1, num_threads);
             break;
 
         /* Fig.4 */
         case 7:
             cout << "[Fig.4a - Latency (Sequential)]\n";
-            testLaten(0, 0);
+            testLaten(k, k_values, 0, 0, 1);
             break;
 
         case 8:
             cout << "[Fig.4a - Latency (Parallel)]\n";
-            testLaten(0, 1);
+            testLaten(k, k_values, 0, 1, num_threads);
             break;
 
         case 9:
             cout << "[Fig.4b - Latency (Sequential)]\n";
-            testLaten(1, 0);
+            testLaten(k, k_values, 1, 0, 1);
             break;
 
         case 10:
             cout << "[Fig.4b - Latency (Parallel)]\n";
-            testLaten(1, 1);
+            testLaten(k, k_values, 1, 1, num_threads);
             break;
 
         default:

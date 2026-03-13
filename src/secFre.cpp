@@ -25,6 +25,7 @@ vector<vector<mpz_class>> secFre(vector<vector<uint64_t>> X_shares,
             x_j_1 = X_shares[0][j];
             x_j_2 = X_shares[1][j];
             f_shares = secEqTest(x_i_1, x_i_2, x_j_1, x_j_2, fServer, k0, k1);
+            // cout<<"eqtest = "<<f_shares[0].get_si() - f_shares[1].get_si() <<endl;
             F[0][i] += f_shares[0];
             F[1][i] += f_shares[1];
             F[0][j] += f_shares[0];

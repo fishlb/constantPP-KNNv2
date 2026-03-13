@@ -3,7 +3,7 @@
 /*
 *test latency for one query
 */
-int testLaten(int test_flag, int is_parallel)
+int testLaten(int k1, vector<int> k2, int test_flag, int is_parallel, const int num_threads)
 {
     cout << "=============================================\n";
     string fig_flag = "";
@@ -38,7 +38,7 @@ int testLaten(int test_flag, int is_parallel)
 
     if (test_flag == 0)
     {
-        k_values = {5};
+        k_values = {k1};
         datasets = {
             // Fig 4a, for different n, k = 5,m = 60, c = 3
             "test100-60.csv",
@@ -52,7 +52,7 @@ int testLaten(int test_flag, int is_parallel)
     else if (test_flag == 1)
     {
         // Fig 4b, for different k, n = 600, m = 60, c = 3
-        k_values = {5, 10, 15, 20, 25};
+        k_values = k2;
         datasets = {
             "test400-60.csv",
         };
@@ -163,7 +163,7 @@ int testLaten(int test_flag, int is_parallel)
                                 &fServer,
                                 &k0_lt, &k1_lt,
                                 &k0_gt, &k1_gt,
-                                &k0_eq, &k1_eq);
+                                &k0_eq, &k1_eq,1);
             }
             else if (is_parallel == 1)
             {
@@ -172,7 +172,8 @@ int testLaten(int test_flag, int is_parallel)
                                          &fServer,
                                          &k0_lt, &k1_lt,
                                          &k0_gt, &k1_gt,
-                                         &k0_eq, &k1_eq);
+                                         &k0_eq, &k1_eq,
+                                        num_threads);
             }
 
             /* ===== secFre ===== */
@@ -200,14 +201,7 @@ int testLaten(int test_flag, int is_parallel)
             fout << fixed << setprecision(3) << "Latency (1 query) = " << latency << " s\n";
 
             cout << fixed << setprecision(3) << "Latency (1 query) = " << latency << " s\n\n";
-
-            // cout << "Latency (1 query) = " << latency << " s\n";
-            // fout << "Latency (1 query) = " << latency << " s\n\n";
         }
-
-        // fout << "===== Finished (k = " << k << ") =====\n";
-        // fout.close();
-
         cout << "Saved to " << out_file << "\n";
     }
     cout << "\n=============================================\n";

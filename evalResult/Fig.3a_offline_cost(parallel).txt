@@ -6,12 +6,12 @@ Dataset        : test100-60.csv
 #Feature(m)    : 60
 #Label(c)      : 3
 Offline time breakdown (seconds):
-  Beaver triples : 0.001085
-  DCF keys       : 0.154965
-  DPF keys       : 0.000345491
-  Random masks   : 5e-06
+  Beaver triples : 0.001249
+  DCF keys       : 0.169178
+  DPF keys       : 0.00039715
+  Random masks   : 8e-06
   --------------------------------
-  Total offline  : 0.156 s
+  Total offline  : 0.171 s
 ================*******==================
 Dataset        : test200-60.csv
 #Sample (n)    : 200
@@ -19,11 +19,11 @@ Dataset        : test200-60.csv
 #Label(c)      : 3
 Offline time breakdown (seconds):
   Beaver triples : 0.002
-  DCF keys       : 0.563
+  DCF keys       : 0.575
   DPF keys       : 0.000
   Random masks   : 0.000
   --------------------------------
-  Total offline  : 0.566 s
+  Total offline  : 0.578 s
 ================*******==================
 Dataset        : test300-60.csv
 #Sample (n)    : 300
@@ -31,11 +31,11 @@ Dataset        : test300-60.csv
 #Label(c)      : 3
 Offline time breakdown (seconds):
   Beaver triples : 0.002
-  DCF keys       : 1.268
+  DCF keys       : 1.335
   DPF keys       : 0.000
   Random masks   : 0.000
   --------------------------------
-  Total offline  : 1.271 s
+  Total offline  : 1.338 s
 ================*******==================
 Dataset        : test400-60.csv
 #Sample (n)    : 400
@@ -43,22 +43,22 @@ Dataset        : test400-60.csv
 #Label(c)      : 3
 Offline time breakdown (seconds):
   Beaver triples : 0.004
-  DCF keys       : 2.221
+  DCF keys       : 2.277
   DPF keys       : 0.000
   Random masks   : 0.000
   --------------------------------
-  Total offline  : 2.225 s
+  Total offline  : 2.281 s
 ================*******==================
 Dataset        : test500-60.csv
 #Sample (n)    : 500
 #Feature(m)    : 60
 #Label(c)      : 3
 Offline time breakdown (seconds):
-  Beaver triples : 0.005
-  DCF keys       : 3.510
-  DPF keys       : 0.000
+  Beaver triples : 0.004
+  DCF keys       : 4.115
+  DPF keys       : 0.039
   Random masks   : 0.000
   --------------------------------
-  Total offline  : 3.515 s
+  Total offline  : 4.158 s
 
 ===== Finished =====

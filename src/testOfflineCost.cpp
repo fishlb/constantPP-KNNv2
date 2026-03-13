@@ -11,11 +11,11 @@ void cal_cost(
     size_t m,
     size_t k,
     ofstream &fout,
-    int is_parallel)
+    int is_parallel,
+    const int num_threads)
 {
-    // cout << "n = " << n << "; m = " << m << endl;
 
-    /* ===== 1. Init (not counted) ===== */
+    /* ===== 1. Init ===== */
     Fss fClient, fServer;
     initializeClient(&fClient, NUM_BIT, NUM_PARTIES);
     initializeServer(&fServer, &fClient);
@@ -68,21 +68,16 @@ void cal_cost(
     }
     else
     {
-        // int n_threads = omp_get_max_threads();
-        const unsigned n_threads =
-            std::max(1u, std::min(6u, std::thread::hardware_concurrency()));
-        // cout << "#thread: " << n_threads << endl;
-
         // Pre-allocate server pool to avoid race conditions
-        std::vector<Fss> server_pool(n_threads);
-        for (int i = 0; i < n_threads; i++)
+        std::vector<Fss> server_pool(num_threads);
+        for (int i = 0; i < num_threads; i++)
         {
             initializeServer(&server_pool[i], &fClient);
         }
 
         /* --- DCF (multi-thread) --- */
         double start_dcf = omp_get_wtime();
-#pragma omp parallel num_threads(n_threads)
+#pragma omp parallel num_threads(num_threads)
         {
             int tid = omp_get_thread_num();
 #pragma omp for schedule(static)
@@ -97,7 +92,7 @@ void cal_cost(
 
         /* --- DPF (multi-thread) --- */
         double start_dpf = omp_get_wtime();
-#pragma omp parallel num_threads(n_threads)
+#pragma omp parallel num_threads(num_threads)
         {
             int tid = omp_get_thread_num();
 #pragma omp for schedule(static)
@@ -134,11 +129,9 @@ void cal_cost(
     fout << fixed << setprecision(3) << "  Total offline  : " << T_total << " s\n";
 
     cout << fixed << setprecision(3) << "Total offline : " << T_total << " s\n";
-    // fout << "  Total offline  : " << T_total << " s\n";
-    // cout << "Total offline : " << T_total << " s\n";
 }
 
-int test_offline_cost(int test_flag, int is_parallel)
+int test_offline_cost(int k1, vector<int> k2, int test_flag, int is_parallel, const int num_threads)
 {
     cout << "=============================================\n";
     cout << "===== Offline Cost Evaluation =====\n";
@@ -162,7 +155,7 @@ int test_offline_cost(int test_flag, int is_parallel)
     if (test_flag == 0)
     {
         // fixed k，different n
-        k_values = {5};
+        k_values = {k1};
         datasets = {
             "test100-60.csv",
             "test200-60.csv",
@@ -175,7 +168,7 @@ int test_offline_cost(int test_flag, int is_parallel)
     else
     {
         // fixed n, different k
-        k_values = {5, 10, 15, 20, 25};
+        k_values = k2;
         datasets = {
             "test400-60.csv",
         };
@@ -220,7 +213,7 @@ int test_offline_cost(int test_flag, int is_parallel)
             }
 
             /* ---- offline test ---- */
-            cal_cost(n, m, k, fout, is_parallel);
+            cal_cost(n, m, k, fout, is_parallel, num_threads);
         }
     }
 

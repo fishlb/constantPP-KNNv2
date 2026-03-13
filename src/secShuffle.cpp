@@ -10,17 +10,6 @@
  * ============================================================
  */
 
- // generate random permutation
-// vector<int> random_permutation(int n) {
-//     vector<int> pi(n);
-//     for (int i = 0; i < n; i++) pi[i] = i;
-
-//     random_device rd;
-//     mt19937 g(42);
-//     shuffle(pi.begin(), pi.end(), g);
-//     return pi;
-// }
-
 vector<int> random_permutation(int n) {
     vector<int> pi(n);
     for (int i = 0; i < n; i++) pi[i] = i;

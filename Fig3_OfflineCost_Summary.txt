@@ -3,18 +3,18 @@
 --- Fig.3a: Varying dataset size n (Fixed k=5) ---
 Scheme Offline(Parallel) Offline(Sequential)
 n                                           
-100              0.156 s             0.584 s
-200              0.566 s             2.279 s
-300              1.271 s             5.623 s
-400              2.225 s             9.106 s
-500              3.515 s            14.063 s
+100              0.171 s             0.575 s
+200              0.578 s             2.359 s
+300              1.338 s             5.279 s
+400              2.281 s             9.793 s
+500              4.158 s            14.508 s
 
 --- Fig.3b: Varying neighbor size k (Fixed n=400) ---
 Scheme Offline(Parallel) Offline(Sequential)
 k                                           
-5                2.176 s             8.975 s
-10                2.22 s              9.57 s
-15               2.214 s             9.554 s
-20               2.274 s             9.723 s
-25                2.35 s             9.499 s
+5                2.372 s             8.928 s
+10               3.005 s             8.976 s
+15               2.438 s             9.197 s
+20               2.492 s              8.83 s
+25               2.968 s             9.029 s
 
