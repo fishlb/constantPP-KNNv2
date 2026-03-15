@@ -20,6 +20,7 @@ This project extends the underlying Function Secret Sharing (FSS) implementation
 - **Build Tool**: CMake >= 3.5
 - **Compiler**: GCC 13.x
 - **Interpreter**: Python >= 3.6 (Required for running Python scripts)
+- **RAM**: >=8GB (Recommended)
 - **Libraries**:
   - GNU GMP (Tested with >= 6.1.2)
   - OpenSSL (`libssl-dev`)
@@ -28,11 +29,12 @@ This project extends the underlying Function Secret Sharing (FSS) implementation
 
 **Tested Benchmark Environment:**
 The experiments in our paper were conducted on:
-- **OS**: Ubuntu 18.04 LTS
+- **OS**: Ubuntu 18.04 LTS 
+- **RAM**: 16GB
+- **Parallelism**: 6 threads
 - **Build Tool**: CMake 3.28.3
 - **Compiler**: GCC 13.1.0 
 - **Interpreter**: Python 3.8.0
-
 ---
 
 ## 2. Environment Setup
@@ -105,13 +107,18 @@ python -c "import numpy; print('NumPy version:', numpy.__version__)"
     
 # Install matplotlib for visualization
 python -m pip install --user --force-reinstall matplotlib
-# Verify the installation path (Expected output: /home/xxx/.local/lib/python3.8/site-packages/matplotlib/__init__.py)
+# Verify the installation (Expected output: /home/xxx/.local/lib/python3.8/site-packages/matplotlib/__init__.py)
 python -c "import matplotlib; print(matplotlib.__file__)"
 ```
 
 ## 3. Build Instructions
 
-Before building, note that the KNN parameter (`k=5`) and the maximum thread count (dynamically capped at `6`) are defined at the top of `main.cpp`. You may adjust these variables if needed. We provide two ways to build and run the project: using an automated script (Recommended) or compiling manually via CMake.
+We provide two ways to build and run the project: using an automated script (Recommended) or compiling manually via CMake.
+
+> **Configuration Note:** Before building, you may adjust the KNN parameter (`k = 5`) and the parallel thread limit (`num_threads`) at the top of `main.cpp`. Note that `num_threads` dynamically adapts to your CPU cores but is capped at 6 by default.
+> 
+> **Tip:** To check how many threads your system supports, run `nproc` or `lscpu` in your terminal. We recommend using at least **6 threads** to observe similar performance trends as reported in Figures 3 & 4.
+> 
 
 ### Option A: Automated Script (Recommended)
 The easiest way to build the project and launch the interactive testing menu is to use the provided bash script:
