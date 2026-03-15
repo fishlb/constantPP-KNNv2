@@ -73,9 +73,9 @@ ShuffleMaterial generateShuffleMaterial(int n) {
     return shuffleMaterial;
 }
 void secShuffle(
-    vector<uint64_t>& share0,
-    vector<uint64_t>& share1,
-    const ShuffleMaterial& shuffleMaterial
+    vector<uint64_t> share0,
+    vector<uint64_t> share1,
+    const ShuffleMaterial shuffleMaterial
 ) {
     int n = share0.size();
 
