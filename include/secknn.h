@@ -61,12 +61,6 @@ vector<vector<mpz_class>> secEqTest(vector<uint64_t> X_shares1, vector<uint64_t>
                                     Fss *fServer, ServerKeyEq *k0, ServerKeyEq *k1);                      // k0,k1<-Gen_{0,1}
 vector<vector<mpz_class>> secZeroTest(vector<uint64_t> X_shares1, vector<uint64_t> X_shares2, uint64_t y, // input y=0
                                       Fss *fServer, ServerKeyEq *k0, ServerKeyEq *k1);                    // k0,k1<-Gen_{0,1}
-vector<uint64_t> secMul(const vector<vector<uint64_t>> triple_shares,                                     // for one x                                 // for one x
-                        uint64_t x_share1, uint64_t x_share2,
-                        uint64_t u_share1, uint64_t u_share2);
-vector<mpz_class> secMul_mpz(const vector<vector<mpz_class>> triple_shares, // for one x
-                             mpz_class x_share1, mpz_class x_share2,
-                             mpz_class u_share1, mpz_class u_share2);
 vector<vector<uint64_t>> secMul(const vector<vector<uint64_t>> &triple_shares,
                                 vector<uint64_t> X_shares1, vector<uint64_t> X_shares2, // for n x
                                 vector<uint64_t> U_shares1, vector<uint64_t> U_shares2);
@@ -80,6 +74,11 @@ vector<vector<uint64_t>> secBGtCom(vector<uint64_t> X_shares1, vector<uint64_t> 
                                    //    vector<uint64_t> r_shares,
                                    Fss *fServer, ServerKeyGt *k0, ServerKeyGt *k1); // Gen_{r,1}
 
+ShuffleMaterial generateShuffleMaterial(int n);
+void secShuffle(
+    vector<uint64_t> share0,
+    vector<uint64_t> share1,
+    const ShuffleMaterial shuffleMaterial);
 vector<vector<uint64_t>> secBLtCom_parallel(
                                 const vector<uint64_t> &X_shares1,
                                 const vector<uint64_t> &X_shares2,
@@ -106,14 +105,6 @@ vector<vector<uint64_t>> secKMin_parallel(const vector<vector<uint64_t>> &triple
                                           const int num_threads);
 vector<vector<mpz_class>> secFre(vector<vector<uint64_t>> X_shares,
                                  Fss *fServer, ServerKeyEq *k0, ServerKeyEq *k1); // Gen_{0,1}
-
-vector<mpz_class> secMin(const vector<vector<mpz_class>> triple_shares,
-                         vector<uint64_t> X_shares1, vector<uint64_t> X_shares2,
-                         vector<mpz_class> L_shares1, vector<mpz_class> L_shares2,
-                         // vector<uint64_t> r_shares,
-                         Fss *fServer,
-                         ServerKeyLt *k0_lt, ServerKeyLt *k1_lt,  // Gen_{1,1}
-                         ServerKeyEq *k0_eq, ServerKeyEq *k1_eq); // Gen_{0,1}
 vector<mpz_class> secMax(const vector<vector<mpz_class>> triple_shares,
                          vector<uint64_t> X_shares1, vector<uint64_t> X_shares2,
                          vector<mpz_class> L_shares1, vector<mpz_class> L_shares2,
@@ -138,10 +129,3 @@ int test_offline_cost(int k1, vector<int> k2, int test_flag, int is_parallel, co
 
 // test latency for one query
 int testLaten(int k1, vector<int> k2, int test_flag, int is_parallel, const int num_threads);
-
-// shuffle function
-ShuffleMaterial generateShuffleMaterial(int n);
-void secShuffle(
-    vector<uint64_t> &share0,
-    vector<uint64_t> &share1,
-    const ShuffleMaterial &shuffleMaterial);
