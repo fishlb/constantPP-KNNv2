@@ -90,21 +90,23 @@ sudo apt install python3.8
 #Set Python 3.8.x to a higher priority in the system
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8 100
 
-# Verify the installation (should output 3.8.x)
+# Verify the installation (Expected output: Python 3.8.x)
 python --version 
 
 # Install required packages (pandas, numpy and matplotlib)
 sudo apt update
-sudo apt install -y python3.8-distutils python3.8-dev
+sudo apt install -y python3.8-distutils python3.8-dev build-essential
 wget https://bootstrap.pypa.io/pip/3.8/get-pip.py -O get-pip-3.8.py
 python get-pip-3.8.py
 python -m pip install pandas numpy
-
+# Verify the installation (Expected output: Pandas version: 2.x.x  NumPy version: 1.x.x)
+python -c "import pandas; print('Pandas version:', pandas.__version__)"
+python -c "import numpy; print('NumPy version:', numpy.__version__)"
+    
 # Install matplotlib for visualization
-python3.8 -m pip install --user --force-reinstall matplotlib
-# Verify the installation path
-python3.8 -c "import matplotlib; print(matplotlib.__file__)"
-# Expected output: /home/xxx/.local/lib/python3.8/site-packages/matplotlib/__init__.py
+python -m pip install --user --force-reinstall matplotlib
+# Verify the installation path (Expected output: /home/xxx/.local/lib/python3.8/site-packages/matplotlib/__init__.py)
+python -c "import matplotlib; print(matplotlib.__file__)"
 ```
 
 ## 3. Build Instructions
