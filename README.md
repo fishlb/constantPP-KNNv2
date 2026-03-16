@@ -17,10 +17,10 @@ This README provides:
 This project extends the underlying Function Secret Sharing (FSS) implementation ([frankw2/libfss](https://github.com/frankw2/libfss)). To ensure successful compilation and reproducibility, your system must meet the following requirements.
 
 **Minimum Requirements:**
+- **RAM**: **>= 8GB (Recommended)**
 - **Build Tool**: CMake >= 3.5
 - **Compiler**: GCC 13.x
 - **Interpreter**: Python >= 3.6 (Required for running Python scripts)
-- **RAM**: >=8GB (Recommended)
 - **Libraries**:
   - GNU GMP (Tested with >= 6.1.2)
   - OpenSSL (`libssl-dev`)
